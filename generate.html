@@ -14,9 +14,15 @@
   </head>
   <body>
     <header>
+      <div class="body__content">Z radością pragną poinformować</div>
      <input type="text" name="Adresat" id="adresat">
+     <div class="body__content">
+      o ceremonii zawarcia związku małżeńskiego <br />
+      w&nbsp;dniu 3 sierpnia 2023 roku o&nbsp;godzinie 14:30 <br />
+      na terenie ogrodu Pałacu Kasztanowego w&nbsp;Swadzimiu
+    </div>
      <button onclick="generate()">Wygeneruj link</button>
-     <a id="generated-url"></textarea>
+     <a href="#" id="generated-url"></textarea>
     </header>
   </body>
 </html>
@@ -42,16 +48,18 @@
     }
   a {
     width: 300px;
+    text-align: center;
   }
 </style>
 
 <script>
   const target = document.getElementById('generated-url');
-  // const urlAddress = 'https://jandrzejczak.github.io/matyldaijordan/'
-  const urlAddress = 'http://localhost:5500/'
+  const urlAddress = 'https://jandrzejczak.github.io/matyldaijordan/'
+  // const urlAddress = 'http://localhost:5500/'
   function generate() {
     const input = document.getElementById('adresat').value;
     const adresat = encodeURIComponent(input);
     target.innerText = `${urlAddress}?name=${adresat}`;
+    target.href = `${urlAddress}?name=${adresat}`;
   }
 </script>

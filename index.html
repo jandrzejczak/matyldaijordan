@@ -13,16 +13,23 @@
     <title>Zaproszenie na ślub Matylda & Jordan</title>
   </head>
   <body>
+    <section>
+      <img src="/public/images/my.png" class="us-image fadeIn" alt="" />
+    </section>
     <header>
-      <div class="header__title">MATYLDA</div>
-      <div class="header__amp">&</div>
-      <div class="header__title">JORDAN</div>
+      <div class="header__title fadeInBottom delay-200">MATYLDA</div>
+      <div class="header__amp fadeInBottom delay-400">&</div>
+      <div class="header__title fadeInBottom delay-600">JORDAN</div>
     </header>
     <section>
       <div class="section__body">
-        <div class="body__content">Z radością pragną poinformować</div>
-        <div id="name" class="body__content">{{name}}</div>
-        <div class="body__content">
+        <div class="body__content fadeInBottom delay-800">
+          Z radością pragną poinformować
+        </div>
+        <div id="name" class="body__content fadeInBottom delay-1000">
+          {{name}}
+        </div>
+        <div class="body__content fadeIn delay-1200">
           o ceremonii zawarcia związku małżeńskiego <br />
           w&nbsp;dniu 3 sierpnia 2023 roku o&nbsp;godzinie 14:30 <br />
           na terenie ogrodu Pałacu Kasztanowego w&nbsp;Swadzimiu
@@ -33,6 +40,10 @@
 </html>
 
 <style>
+  html {
+    background-color: #fcecca;
+    color: #1d1d1d;
+  }
   body {
     font-family: "Playfair Display", serif;
     margin: 0 auto;
@@ -40,7 +51,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
+    padding: 2rem 1rem 4rem;
   }
   header {
     display: flex;
@@ -67,9 +79,64 @@
     flex-direction: column;
   }
   .body__content {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
     text-align: center;
     line-height: 1.6;
+  }
+  .us-image {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+  .delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .delay-800 {
+    animation-delay: 800ms;
+  }
+  .delay-1000 {
+    animation-delay: 1000ms;
+  }
+  .delay-1200 {
+    animation-delay: 1200ms;
+  }
+
+  .fadeInBottom {
+    animation-name: fadeInBottom;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+  .fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+  @keyframes fadeInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(5rem);
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>
 
