@@ -91,6 +91,29 @@
     font-size: 1.75rem;
     letter-spacing: 0.25rem;
     text-align: center;
+    position: relative;
+  }
+  .header__amp::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100px;
+    border-radius: 8px;
+    background-color: #1d1d1d;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-100%);
+  }
+  .header__amp::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 96px;
+    border-radius: 8px;
+    background-color: #1d1d1d;
+    right: 34px;
+    top: 50%;
+    transform: translateY(-100%);
   }
   .section__body {
     padding-top: 2rem;
