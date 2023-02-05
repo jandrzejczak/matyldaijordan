@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Zaproszenie na ślub Matylda & Jordan</title>
+  </head>
+  <body>
+    <header>
+     <input type="text" name="Adresat" id="adresat">
+     <button onclick="generate()">Wygeneruj link</button>
+     <a id="generated-url"></textarea>
+    </header>
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: "Playfair Display", serif;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  header  * {
+      margin-top: 1rem;
+    }
+  a {
+    width: 300px;
+  }
+</style>
+
+<script>
+  const target = document.getElementById('generated-url');
+  // const urlAddress = 'https://jandrzejczak.github.io/matyldaijordan/'
+  const urlAddress = 'http://localhost:5500/'
+  function generate() {
+    const input = document.getElementById('adresat').value;
+    const adresat = encodeURIComponent(input);
+    target.innerText = `${urlAddress}?name=${adresat}`;
+  }
+</script>
