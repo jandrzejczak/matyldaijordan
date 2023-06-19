@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f0e7d2" />
     <meta
       property="og:image"
       content="https://jandrzejczak.github.io/matyldaijordan/public/images/og.png"
@@ -28,7 +29,7 @@
     />
     <title>Zaproszenie na ślub Matylda & Jordan</title>
   </head>
-  <body>
+  <body class="min-safe-h-screen">
     <div class="falling-leaves"></div>
     <section>
       <img
@@ -74,7 +75,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     flex-direction: column;
     padding: 2rem 1rem 4rem;
     box-sizing: border-box;
@@ -213,11 +213,37 @@
     left: 0;
     width: 32px;
     height: 32px;
-    background: url(https://jandrzejczak.github.io/matyldaijordan/public/images/dandelion.png)
-      no-repeat;
+    background: url(https://jandrzejczak.github.io/matyldaijordan/public/images/dandelion.png) no-repeat;
     background-size: 100%;
     transform-style: preserve-3d;
     backface-visibility: visible;
+  }
+  .min-safe-h-screen {
+    /* equivalent to 100dvh in major browsers */
+    min-height: calc(
+      100vh - env(safe-area-inset-bottom, 0) - env(safe-area-inset-top, 0)
+    );
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    .min-safe-h-screen {
+      /* for ios safari 15, safe-area-inset-bottom is 0, so a special fix apply here */
+      min-height: -webkit-fill-available;
+    }
+  }
+
+  .max-safe-h-screen {
+    /* equivalent to 100dvh in major browsers */
+    max-height: calc(
+      100vh - env(safe-area-inset-bottom, 0) - env(safe-area-inset-top, 0)
+    );
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    .max-safe-h-screen {
+      /* for ios safari 15, safe-area-inset-bottom is 0, so a special fix apply here */
+      max-height: -webkit-fill-available;
+    }
   }
 </style>
 
