@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f0e7d2" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0"
+    />
+    <meta name="theme-color" content="#f8f3e8" />
     <meta
       property="og:image"
       content="https://jandrzejczak.github.io/matyldaijordan/public/images/og.png"
@@ -29,12 +32,12 @@
     />
     <title>Zaproszenie na ślub Matylda & Jordan</title>
   </head>
-  <body class="min-safe-h-screen">
-    <div class="falling-leaves"></div>
+  <body>
+    <div class="falling-leaves fadeIn delay-100"></div>
     <section>
       <img
         src="https://jandrzejczak.github.io/matyldaijordan/public/images/my.png"
-        class="us-image fadeIn"
+        class="us-image fadeIn delay-100"
         alt=""
       />
     </section>
@@ -64,8 +67,12 @@
 </html>
 
 <style>
+  :root {
+    --app-height: 100%;
+  }
+
   html {
-    background-color: #f0e7d2;
+    background-color: #f7efdf;
     background-image: url(https://jandrzejczak.github.io/matyldaijordan/public/images/noise.png);
     color: #1d1d1de7;
   }
@@ -76,8 +83,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 2rem 1rem 4rem;
+    height: var(--app-height);
+    padding: 2rem 1rem;
     box-sizing: border-box;
+    overflow: hidden;
   }
   header {
     display: flex;
@@ -90,6 +99,16 @@
     letter-spacing: 0.25rem;
     font-weight: 500;
     text-align: center;
+  }
+  @media (max-width: 800px) {
+    .header__title {
+      font-size: 2.5rem;
+    }
+  }
+  @media (max-width: 360px) {
+    .header__title {
+      font-size: 2rem;
+    }
   }
   .header__amp {
     font-size: 1.75rem;
@@ -119,6 +138,27 @@
     top: 50%;
     transform: translateY(-100%);
   }
+  @media (max-width: 800px) {
+    .header__amp {
+      font-size: 1.25rem;
+    }
+    .header__amp::after {
+      height: 2px;
+    }
+    .header__amp::before {
+      height: 2px;
+    }
+  }
+  @media (max-width: 360px) {
+    .header__amp::after {
+      height: 2px;
+      width: 70px;
+    }
+    .header__amp::before {
+      height: 2px;
+      width: 66px;
+    }
+  }
   .section__body {
     padding-top: 1.25rem;
     display: flex;
@@ -130,30 +170,39 @@
     padding-top: 0.5rem;
     text-align: center;
     line-height: 1.6;
+    font-size: 16px;
+  }
+  @media (max-width: 360px) {
+    .body__content {
+      font-size: 14px;
+    }
   }
   .us-image {
     width: 100%;
     max-width: 250px;
   }
 
+  .delay-100 {
+    animation-delay: 700ms;
+  }
   .delay-200 {
-    animation-delay: 200ms;
+    animation-delay: 800ms;
   }
   .delay-400 {
-    animation-delay: 400ms;
+    animation-delay: 900ms;
   }
   .delay-600 {
-    animation-delay: 600ms;
+    animation-delay: 1000ms;
   }
 
   .delay-800 {
-    animation-delay: 800ms;
+    animation-delay: 1400ms;
   }
   .delay-1000 {
-    animation-delay: 1000ms;
+    animation-delay: 1600ms;
   }
   .delay-1200 {
-    animation-delay: 1200ms;
+    animation-delay: 1800ms;
   }
 
   .fadeInBottom {
@@ -213,7 +262,8 @@
     left: 0;
     width: 32px;
     height: 32px;
-    background: url(https://jandrzejczak.github.io/matyldaijordan/public/images/dandelion.png) no-repeat;
+    background: url(https://jandrzejczak.github.io/matyldaijordan/public/images/dandelion.png)
+      no-repeat;
     background-size: 100%;
     transform-style: preserve-3d;
     backface-visibility: visible;
@@ -238,16 +288,15 @@
       100vh - env(safe-area-inset-bottom, 0) - env(safe-area-inset-top, 0)
     );
   }
-
-  @supports (-webkit-touch-callout: none) {
-    .max-safe-h-screen {
-      /* for ios safari 15, safe-area-inset-bottom is 0, so a special fix apply here */
-      max-height: -webkit-fill-available;
-    }
-  }
 </style>
 
 <script>
+  const appHeight = () => {
+    const doc = document.documentElement;
+    doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+  };
+  window.addEventListener("resize", appHeight);
+  appHeight();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const name = urlParams.get("name");
